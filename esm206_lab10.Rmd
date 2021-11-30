@@ -45,3 +45,37 @@ Use cowsay::say() to make a character say something to you.
 
 # usethis::edit_r_profile()
 
+
+
+To connect to git in the console:
+# usethis::use_git()
+
+# usethis::use_github()
+
+in the terminal:
+
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
+
+
+## paletteer to access thousands of color palettes
+
+```{r}
+storms %>% 
+  group_by(name) %>% 
+  summarize(min_pressure = min(pressure, na.rm = TRUE)) %>% 
+  slice_min(n = 10, min_pressure) %>% 
+  ggplot(aes(x = min_pressure, y = name)) +
+  geom_col(aes(fill = name)) +
+  scale_fill_paletteer_d("ggsci::pink_material")
+# View(palettes_d_names) in the console to see colors
+# paletteer_d("palettetown::miltank") in console to see the exact color codes
+```
+
+
+
+
+
+
