@@ -74,7 +74,29 @@ storms %>%
 # paletteer_d("palettetown::miltank") in console to see the exact color codes
 ```
 
+## One spatial data example
 
+```{r}
+vegetation <- read_sf("doc.kml") %>% 
+  select(Name) %>% 
+  clean_names()
+
+ggplot(data = vegetation) +
+  geom_sf(aes(fill = name), color = NA) +
+  theme_minimal() +
+  scale_fill_paletteer_d("ggthemes::manyeys") +
+  labs(title = "Jornada Basin LTER Vegetation",
+       caption = "Source: Jornada LTER")
+
+# Update theme to theme_minimal
+# Fill color change based on the vegetation
+# color of line to NA (color = NA)
+```
+
+```{r}
+ggsave(filename = "my_awesome_map.jpg", width = 8, height = 5)
+# default applies this to the last plot ran
+```
 
 
 
